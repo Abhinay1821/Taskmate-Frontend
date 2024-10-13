@@ -27,7 +27,7 @@ const LoginForm = () => {
             const resp = await result.json();
             if (resp['token'] !== undefined) {
                 setAuthToken(resp.token);
-                navigate('/dashboards'); 
+                window.location.reload() 
             } else {
                 setError('Please Register first!');
             }
