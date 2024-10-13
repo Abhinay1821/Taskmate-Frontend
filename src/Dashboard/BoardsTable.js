@@ -12,7 +12,7 @@ const BoardsTable = () => {
     //     const fetchData = async () => {
     //         try {
     //             const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
-    //             const response = await fetch('https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/kanban', {
+    //             const response = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban', {
     //                 headers: {
     //                     'Content-Type': 'application/json',
     //                     'Authorization': `Bearer ${token}`, // Include Bearer token for authentication

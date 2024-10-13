@@ -18,7 +18,7 @@ export default function DataProvider({ children }) {
         setLoading(true)
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/kanban', {
+            const response = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,  // Add Bearer token for authentication
@@ -42,7 +42,7 @@ export default function DataProvider({ children }) {
     const createBoard = async (boardName) => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/kanban', {
+            const response = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function DataProvider({ children }) {
     const fetchTasks = async (id) => {
         try {
             const token = localStorage.getItem('authToken')
-            const response = await fetch(`https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/kanban/${id}/tasks`, {
+            const response = await fetch(`https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban/${id}/tasks`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,  // Add Bearer token for authentication
@@ -85,7 +85,7 @@ export default function DataProvider({ children }) {
         console.log('id in create', id)
         try {
             const token = localStorage.getItem('authToken')
-            const response = await fetch(`https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/kanban/${id}/tasks`, {
+            const response = await fetch(`https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban/${id}/tasks`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export default function DataProvider({ children }) {
     const updateTask = async (id, taskId, name, desc, status) => {
         try {
             const token = localStorage.getItem('authToken')
-            const response = await fetch(`https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/kanban/${id}/tasks/${taskId}`, {
+            const response = await fetch(`https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban/${id}/tasks/${taskId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
