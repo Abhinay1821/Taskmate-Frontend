@@ -18,9 +18,6 @@ const BoardsTable = () => {
             setDeleting(null); 
         }
     };
-    React.useEffect(async()=>{
-        await fetchBoards()
-    },[])
 
     if (loading) {
         return <div>Loading...</div>;
