@@ -11,6 +11,7 @@
 .dashboard-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 0 24px;
   background-color: #fff;
@@ -100,10 +101,6 @@
 
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
-  .dashboard-header {
-      flex-direction: column;
-      align-items: flex-start;
-  }
 
   .profile-section {
       flex-direction: column;
@@ -119,10 +116,10 @@
 /* BoardsTable css */
 
 .board-container {
-  padding: 20px;
+  /* padding: 20px; */
   font-family: Arial, sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
+  width:90%;
+  margin-top: 10px !important;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -135,7 +132,6 @@
   border-collapse: collapse;
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  min-width: 800px; /* Ensure columns don't get too squeezed */
 }
 
 .board-table th, .board-table td {

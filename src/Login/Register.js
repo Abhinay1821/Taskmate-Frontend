@@ -28,6 +28,7 @@ const RegisterForm = () => {
             const resp = await result.json();
             if (resp['token'] !== undefined) {
                 setAuthToken(resp.token);
+                localStorage.setItem('authToken',resp.token)
                 navigate('/dashboards');  
             } else {
                 setMessage(resp.message);

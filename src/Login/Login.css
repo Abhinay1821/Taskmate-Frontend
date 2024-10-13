@@ -174,12 +174,13 @@ p a:hover {
   }
 
   input {
-    margin-right: 0.65px;
+    margin-right: 32px;
       padding: 0.65rem;
       font-size: 0.9rem;
   }
 
   .login-btn, .google-btn {
+       margin-right: 32px;
       padding: 1 rem;
       font-size: 0.9rem;
   }
@@ -358,6 +359,7 @@ p a:hover {
 
   .register-btn {
       padding: 0.65rem;
+      margin-right: 32px;
       font-size: 0.9rem;
   }
 }

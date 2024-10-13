@@ -5,9 +5,9 @@ import { formatDateTime } from '../utils';
 import './dashboard.css'
 
 const BoardsTable = () => {
-    const [error, setError] = useState(null); // State for error handling
-    const { projects, loading, deleteBoard,fetchBoards } = useData(); // Getting deleteBoard from useData
-    const [deleting, setDeleting] = useState(null); // Track which board is being deleted
+    const [error, setError] = useState(null); 
+    const { projects, loading, deleteBoard } = useData(); 
+    const [deleting, setDeleting] = useState(null); 
 
     const handleDelete = async (projectId) => {
         setDeleting(projectId); 

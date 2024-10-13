@@ -59,10 +59,10 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <div className="form-options">
+                {/* <div className="form-options">
                     <input type="checkbox" /> Remember me
                     <a href="#">Forgot Password?</a>
-                </div>
+                </div> */}
                 <button className="login-btn" type="submit">Login</button> {/* No need for onClick here */}
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>

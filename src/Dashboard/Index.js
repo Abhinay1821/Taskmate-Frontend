@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom'; // To navigate between pages
 import SearchBar from '../Components/SearchBar';
 import CreateBoard from '../Components/CreateBoard';
 import BoardsTable from './BoardsTable';
+import { useData } from '../Components/DataProvider';
 
 export default function Dashboard() {
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
     const { setAuthToken } = useAuth(); 
+    const { projects } = useData(); 
     const navigate = useNavigate();
     const handleLogout = () => {
-        setAuthToken(null); // Clear authentication token
+        setAuthToken(null); 
         localStorage.removeItem('authToken'); // Remove token from localStorage
         navigate('/'); // Redirect to login page
     };
@@ -36,7 +38,7 @@ export default function Dashboard() {
                 </div>
             </header>
             {isPopupOpen && <CreateBoard onClose={() => setIsPopupOpen(false)} />}
-            <BoardsTable />
+            {projects.length>0 ? <BoardsTable /> : <h1>You Don't have Board!</h1>}
         </div>
     );
 }
