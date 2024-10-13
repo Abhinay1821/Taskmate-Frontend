@@ -5,7 +5,7 @@ import { formatDateTime } from '../utils';
 
 const BoardsTable = () => {
     const [error, setError] = useState(null); // State for error handling
-    const { projects, loading, deleteBoard } = useData(); // Getting deleteBoard from useData
+    const { projects, loading, deleteBoard,fetchBoards } = useData(); // Getting deleteBoard from useData
     const [deleting, setDeleting] = useState(null); // Track which board is being deleted
 
     const handleDelete = async (projectId) => {
@@ -18,6 +18,9 @@ const BoardsTable = () => {
             setDeleting(null); 
         }
     };
+    React.useEffect(async()=>{
+        await fetchBoards()
+    },[])
 
     if (loading) {
         return <div>Loading...</div>;
@@ -26,6 +29,7 @@ const BoardsTable = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
+
 
     return (
         <div className="board-container">
