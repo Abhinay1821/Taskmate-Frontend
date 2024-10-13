@@ -46,7 +46,7 @@ const EditTaskForm = ({ task,onSave,onClose,boardId }) => {
             onChange={(e) => setStatus(e.target.value)} 
           >
             <option value="todo">To Do</option>
-            <option value="inProgress">In Progress</option>
+            <option value="inProcess">In Progress</option>
             <option value="completed">Completed</option>
           </select>
         </label>

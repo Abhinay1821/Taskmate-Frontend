@@ -1,41 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useData } from '../Components/DataProvider';
-import {formatDateTime} from '../utils'
-
+import { formatDateTime } from '../utils';
 
 const BoardsTable = () => {
     const [error, setError] = useState(null); // State for error handling
-    const {projects,loading} = useData()
+    const { projects, loading, deleteBoard } = useData(); // Getting deleteBoard from useData
+    const [deleting, setDeleting] = useState(null); // Track which board is being deleted
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
-    //             const response = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/kanban', {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Bearer ${token}`, // Include Bearer token for authentication
-    //                 },
-    //             });
+    const handleDelete = async (projectId) => {
+        setDeleting(projectId); 
+        try {
+            await deleteBoard(projectId); 
+        } catch (err) {
+            setError(err.message); 
+        } finally {
+            setDeleting(null); 
+        }
+    };
 
-    //             if (!response.ok) {
-    //                 throw new Error('Failed to fetch data');
-    //             }
-
-    //             const data = await response.json(); // Parse the response JSON
-    //             setProjects(data); // Set the fetched data
-    //         } catch (error) {
-    //             setError(error.message); // Set any errors encountered
-    //         } finally {
-    //             setLoading(false); // Set loading to false when done
-    //         }
-    //     };
-
-    //     fetchData(); // Call the fetch function
-    // }, []); 
-
-    // Loading and error handling
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -45,30 +28,40 @@ const BoardsTable = () => {
     }
 
     return (
-        <div>
-            <h1>Your Boards !</h1>
-            <table style={{ width: '100%', borderCollapse: 'collapse', padding: '20px' }}>
+        <div className="board-container">
+            <h1>Your Boards</h1>
+            <table className="board-table">
                 <thead>
                     <tr>
-                        <th style={thStyle}>Project Name</th>
-                        <th style={thStyle}>To-Do Items</th>
-                        <th style={thStyle}>In Process Items</th>
-                        <th style={thStyle}>Completed Items</th>
-                        <th style={thStyle}>Created At</th>
-                        <th style={thStyle}>Updated At</th>
+                        <th>Project Name</th>
+                        <th>To-Do Items</th>
+                        <th>In Process Items</th>
+                        <th>Completed Items</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {projects.map((project) => (
                         <tr key={project._id}>
-                            <td style={tdStyle}>
-                                <Link to={`/board/${project._id}`}>{project.name}</Link>
+                            <td>
+                                <Link to={`/board/${project._id}`} className="project-link">{project.name}</Link>
                             </td>
-                            <td style={tdStyle}>{project.tasks.todo}</td>
-                            <td style={tdStyle}>{project.tasks.inProcess}</td>
-                            <td style={tdStyle}>{project.tasks.completed}</td>
-                            <td style={tdStyle}>{formatDateTime(project.createdAt)}</td>
-                            <td style={tdStyle}>{formatDateTime(project.updatedAt)}</td>
+                            <td>{project.tasks.todo}</td>
+                            <td>{project.tasks.inProcess}</td>
+                            <td>{project.tasks.completed}</td>
+                            <td>{formatDateTime(project.createdAt)}</td>
+                            <td>{formatDateTime(project.updatedAt)}</td>
+                            <td>
+                                <button
+                                    className={`delete-btn ${deleting === project._id ? 'deleting' : ''}`}
+                                    onClick={() => handleDelete(project._id)}
+                                    disabled={deleting === project._id}
+                                >
+                                    {deleting === project._id ? 'Deleting...' : 'Delete'}
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -77,19 +70,74 @@ const BoardsTable = () => {
     );
 };
 
-// Inline styles for table elements
-const thStyle = {
-    border: '1px solid #ddd',
-    padding: '8px',
-    backgroundColor: '#f2f2f2',
-    fontWeight: 'bold',
-    textAlign: 'left'
-};
+// Styles using CSS classes
+const styles = `
+.board-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
 
-const tdStyle = {
-    border: '1px solid #ddd',
-    padding: '8px',
-    textAlign: 'left'
-};
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.board-table th, .board-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.board-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.board-table td {
+    text-align: center;
+    background-color: #fff;
+}
+
+.project-link {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #ff1a1a;
+}
+
+.delete-btn:disabled {
+    background-color: #ffcccc;
+    cursor: not-allowed;
+}
+
+.deleting {
+    background-color: #ff6666;
+}
+`;
+
+// Add the styles to the document
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
 
 export default BoardsTable;

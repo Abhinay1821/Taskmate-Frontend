@@ -105,23 +105,45 @@
   }
   .add-task-button {
     background-color: #007bff; 
+    width:24px;
+    height:24px;
     margin-left: 4px;
     margin-bottom: 4px;
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 50%; /* Make the button circular */
-    padding: 4px; /* Add some padding */
-    cursor: pointer; /* Show pointer cursor on hover */
+    color: white; 
+    border: none; 
+    border-radius:8px; 
+    padding: 4px;
+    cursor: pointer; 
     font-size: 16px; 
-    line-height: 1; /* Ensure proper text alignment */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+    line-height: 1; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  }
+
+  .back-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
   }
   
   /* Media Query for Responsive Design */
   @media (max-width: 768px) {
     .board-columns {
       flex-direction: column;
+    }
+    .back-button {
+      width: 50%;
+      text-align: center;
     }
   
     .board-column {

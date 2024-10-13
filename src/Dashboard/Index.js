@@ -14,7 +14,7 @@ export default function Dashboard() {
     // Logout functionality: clear token and navigate to login
     const handleLogout = () => {
         setAuthToken(null); // Clear authentication token
-        localStorage.removeItem('token'); // Remove token from localStorage
+        localStorage.removeItem('authToken'); // Remove token from localStorage
         navigate('/'); // Redirect to login page
     };
 
@@ -23,16 +23,16 @@ export default function Dashboard() {
         <div className="dashboard">
             <header className="dashboard-header">
                 <div className="logo">
-                    <h1>Kanban</h1>
+                    <h1>Taskmate</h1>
                 </div>
                 <nav className="navbar">
-                    <button className="blood-report-btn" onClick={() => setIsPopupOpen(true)}>Create Board</button>
-                    <SearchBar className="search-dash-container" />
+                    <button className="blood-report-btn" onClick={() => setIsPopupOpen(true)}>+ Create Board</button>
+                    {/* <SearchBar className="search-dash-container" /> */}
                 </nav>
                 <div className="profile-section">
                     <div className="profile">
                         <img src={'https://cdn.pixabay.com/photo/2021/04/07/17/01/woman-6159648_1280.jpg'} className="profile-icon" />
-                        <span className="profile-name">{userInfo?.displayName}</span>
+                        {/* <span className="profile-name">{userInfo?.displayName}</span> */}
                         {/* Add Logout Button */}
                         <button className="logout-btn" onClick={handleLogout}>Logout</button>
                     </div>

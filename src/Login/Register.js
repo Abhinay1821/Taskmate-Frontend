@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import { useAuth } from './AuthProvider';
+import { BASE_URL } from '../constnts';
 
 const RegisterForm = () => {
     const { setAuthToken } = useAuth();
@@ -13,7 +14,7 @@ const RegisterForm = () => {
     const handleRegister = async (event) => {
         event.preventDefault(); 
         try {
-            const result = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/auth/register', {
+            const result = await fetch(`${BASE_URL}/api/auth/register`, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json', 

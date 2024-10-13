@@ -2,9 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import './Login.css';
 import { useAuth } from './AuthProvider';
+import {BASE_URL} from '.././constnts'
 
 const LoginForm = () => {
-    const { handleGoogleLogin, setAuthToken } = useAuth();
+    const { setAuthToken } = useAuth();
     const [error, setError] = React.useState(null);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -13,7 +14,7 @@ const LoginForm = () => {
     const handleLogin = async (event) => {
         event.preventDefault(); 
         try {
-            const result = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/auth/login', {
+            const result = await fetch(`${BASE_URL}/api/auth/login`, {
                 method: 'POST',  
                 headers: {
                     'Content-Type': 'application/json',  

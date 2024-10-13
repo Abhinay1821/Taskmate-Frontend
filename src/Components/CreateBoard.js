@@ -24,7 +24,8 @@ const CreateBoard = ({ onClose }) => {
   };
 
   return (
-    <div className="create-board-container">
+    <div className='modal-overlay'>
+          <div className="create-board-container">
       <h2>Create a New Board</h2>
       <form onSubmit={handleCreateBoard} className="create-board-form">
         <input
@@ -41,6 +42,8 @@ const CreateBoard = ({ onClose }) => {
         </div>
       </form>
     </div>
+    </div>
+
   );
 };
 
