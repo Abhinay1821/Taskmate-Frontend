@@ -8,10 +8,8 @@ import BoardsTable from './BoardsTable';
 
 export default function Dashboard() {
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-    const { userInfo, setAuthToken } = useAuth(); // Access setAuthToken for logout
+    const { setAuthToken } = useAuth(); 
     const navigate = useNavigate();
-
-    // Logout functionality: clear token and navigate to login
     const handleLogout = () => {
         setAuthToken(null); // Clear authentication token
         localStorage.removeItem('authToken'); // Remove token from localStorage
@@ -33,7 +31,6 @@ export default function Dashboard() {
                     <div className="profile">
                         <img src={'https://cdn.pixabay.com/photo/2021/04/07/17/01/woman-6159648_1280.jpg'} className="profile-icon" />
                         {/* <span className="profile-name">{userInfo?.displayName}</span> */}
-                        {/* Add Logout Button */}
                         <button className="logout-btn" onClick={handleLogout}>Logout</button>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import './style.css';
 import { useData } from '../Components/DataProvider';
 import CreateTaskForm from '../Components/CreateTaksForm';
 import EditTaskForm from '../Components/EditTaskForm'; // Import the modal for editing
+import { BASE_URL } from '../constnts';
 
 const Board = () => {
   const { id } = useParams(); // Get the board ID from the URL params
@@ -61,7 +62,7 @@ const Board = () => {
     const updatedTasks = [...taskLists[status]]; // Get the task list for the current status
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`http://localhost:5000/api/kaban/${id}/tasks/${taskId}`, {
+      const response = await fetch(`${BASE_URL}/api/kaban/${id}/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

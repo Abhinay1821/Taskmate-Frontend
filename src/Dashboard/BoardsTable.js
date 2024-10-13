@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useData } from '../Components/DataProvider';
 import { formatDateTime } from '../utils';
+import './dashboard.css'
 
 const BoardsTable = () => {
     const [error, setError] = useState(null); // State for error handling
@@ -70,75 +71,5 @@ const BoardsTable = () => {
         </div>
     );
 };
-
-// Styles using CSS classes
-const styles = `
-.board-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.board-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.board-table th, .board-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.board-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    text-align: center;
-}
-
-.board-table td {
-    text-align: center;
-    background-color: #fff;
-}
-
-.project-link {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.project-link:hover {
-    text-decoration: underline;
-}
-
-.delete-btn {
-    padding: 6px 12px;
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.delete-btn:hover {
-    background-color: #ff1a1a;
-}
-
-.delete-btn:disabled {
-    background-color: #ffcccc;
-    cursor: not-allowed;
-}
-
-.deleting {
-    background-color: #ff6666;
-}
-`;
-
-// Add the styles to the document
-const styleSheet = document.createElement("style");
-styleSheet.type = "text/css";
-styleSheet.innerText = styles;
-document.head.appendChild(styleSheet);
 
 export default BoardsTable;
