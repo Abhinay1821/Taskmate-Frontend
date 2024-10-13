@@ -13,7 +13,7 @@ const RegisterForm = () => {
     const handleRegister = async (event) => {
         event.preventDefault(); 
         try {
-            const result = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/auth/register', {
+            const result = await fetch('https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/auth/register', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json', 

@@ -13,7 +13,7 @@ const LoginForm = () => {
     const handleLogin = async (event) => {
         event.preventDefault(); 
         try {
-            const result = await fetch('https://abhinay-backend-dvazccevfsavezaq.centralindia-01.azurewebsites.net/api/auth/login', {
+            const result = await fetch('https://taskmate-fqgyd3egdbfccvh7.centralindia-01.azurewebsites.net/api/auth/login', {
                 method: 'POST',  
                 headers: {
                     'Content-Type': 'application/json',  
