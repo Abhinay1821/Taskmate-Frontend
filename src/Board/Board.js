@@ -62,7 +62,7 @@ const Board = () => {
     const updatedTasks = [...taskLists[status]]; // Get the task list for the current status
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`${BASE_URL}/api/kaban/${id}/tasks/${taskId}`, {
+      const response = await fetch(`${BASE_URL}/api/kanban/${id}/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
