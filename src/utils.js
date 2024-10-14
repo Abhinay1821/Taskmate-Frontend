@@ -22,7 +22,7 @@ export const formatDateTime = (isoString) => {
   export const InactivityHandler = () => {
     const navigate = useNavigate();
   
-    const inactivityTimeout = 10000; 
+    const inactivityTimeout = 30*60*1000; 
     let timeoutId;
   
     const resetTimeout = () => {
